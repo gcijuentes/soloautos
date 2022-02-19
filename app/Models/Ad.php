@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Aviso extends Authenticatable
+class Ad extends Authenticatable
 {
     use HasFactory, Notifiable;
 
@@ -22,6 +22,11 @@ class Aviso extends Authenticatable
     protected $fillable = [
         'titulo'
     ];
+
+    //relacion One to many
+    public function Car(){
+        return $this->belongsTo('App\Models\Car','id_vehiculo','id');
+    }
 
 
 }

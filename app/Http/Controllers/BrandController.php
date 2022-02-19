@@ -2,50 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Models\Brand;
 use Illuminate\Support\Facades\DB;
 use App\Models\Car;
 use App\Models\Ad;
-use Illuminate\Http\Request;
 
-class CarController extends ControllerBase
+
+class BrandController extends ControllerBase
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+        $listBrand = Brand::all();
 
-        //$avisosList = Ad::with('car','car.ciudad','car.ciudad.region','car.images');
+        //$listBrand = $listBrand->paginate(1500);
 
-
-
-        $vehiculoList = Car::with('ciudad','ciudad.region','images','ad');
-
-        if($request->has('brand')){
-             //$request->query('tipoPlan')
-            $vehiculoList->where('id_marca','=',$request->input('brand'));
-            //$avisosList->where('id_marca','=',$request->input('brand'));
-        }
-
-        if($request->has('searchString')){
-            // $request->query('tipoPlan')
-            $vehiculoList->join('aviso', 'vehiculo.id', '=', 'id_vehiculo');
-            $vehiculoList->where('aviso.titulo','LIKE', '%'. $request->input('searchString') .'%');
-            //$vehiculoList->get(['.*']);
-        }
-
-
-        //$vehiculoList2 =  DB::table('vehiculo')->get(['*.*']);
-
-        //$vehiculoList->with('images');
-
-
-       // $vehiculoList2 = $vehiculoList2->paginate(1500);
-        $vehiculoList = $vehiculoList->paginate(1500,['vehiculo.*']);
-
-        return $this->sendResponse($vehiculoList, 'OK');
+        return $this->sendResponse($listBrand,'OK');
     }
 
     /**
@@ -66,10 +43,7 @@ class CarController extends ControllerBase
      */
     public function store(Request $request)
     {
-
-
-
-
+        //
     }
 
     /**

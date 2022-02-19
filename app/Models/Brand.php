@@ -5,20 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Region extends Model
+class Brand extends Model
 {
-    protected $table = 'region';
+    protected $table = 'marca';
     protected $primaryKey = 'id';
     use HasFactory;
 
     protected $fillable = [
-        'nombre_region'
+        'nombre_marca'
     ];
 
-    //relacion One to many
-    public function provinces(){
-        return $this->hasMany('App\Models\province');
-    }
 
 
 }

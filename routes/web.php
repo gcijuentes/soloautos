@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\ScrapperController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,3 +19,7 @@ Route::post('/api/register',[UserController::class,'register']);
 Route::post('/api/login',[UserController::class,'login']);
 
 Route::post('/api/cars',[CarController::class,'index']);
+
+Route::get('/scrap/yapo',[ScrapperController::class,'index']);
+
+Route::post('/scrap/yapo',[ScrapperController::class,'scrapYapo']);

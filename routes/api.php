@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::resource('/car', 'App\Http\Controllers\CarController');
+Route::resource('/brand', 'App\Http\Controllers\BrandController');
 
 Route::get('/user', function (Request $request) {
     return $request->user();

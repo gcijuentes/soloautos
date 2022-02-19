@@ -5,20 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ciudad extends Model
+class Province extends Model
 {
-    protected $table = 'ciudad';
+    protected $table = 'provincia';
     protected $primaryKey = 'id';
     use HasFactory;
 
     protected $fillable = [
-        'nombreCiudad'
+        'provincia_nombre'
     ];
 
 
     //relacion One to many
-    public function vehiculos(){
-        return $this->hasMany('App\Models\Vehiculo');
+    public function ciudades(){
+        return $this->hasMany('App\Models\City');
     }
 
     //relacion many to one
