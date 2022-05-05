@@ -19,10 +19,12 @@ class Car extends Model
         , 'valor'
         ,'comentario'
         ,'color'
+        ,'anio'
+        ,'id_ciudad'
     ];
 
 
-    //relacion One to many
+    //relacion many to one
     public function ciudad(){
         return $this->belongsTo('App\Models\City','id_ciudad','id');
     }

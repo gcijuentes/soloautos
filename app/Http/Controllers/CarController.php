@@ -19,9 +19,8 @@ class CarController extends ControllerBase
 
         //$avisosList = Ad::with('car','car.ciudad','car.ciudad.region','car.images');
 
+        $vehiculoList = Car::with('ciudad','ciudad.provinces','ciudad.provinces.region','images','ad');
 
-
-        $vehiculoList = Car::with('ciudad','ciudad.region','images','ad');
 
         if($request->has('brand')){
              //$request->query('tipoPlan')
@@ -41,11 +40,15 @@ class CarController extends ControllerBase
 
         //$vehiculoList->with('images');
 
-
        // $vehiculoList2 = $vehiculoList2->paginate(1500);
         $vehiculoList = $vehiculoList->paginate(1500,['vehiculo.*']);
 
-        return $this->sendResponse($vehiculoList, 'OK');
+        $meta['current_page'] = 1;
+        $meta['last_page'] = 1;
+        $meta['per_page'] = 10;
+
+
+        return $this->sendResponse($vehiculoList, 'OK',$meta);
     }
 
     /**
@@ -80,7 +83,13 @@ class CarController extends ControllerBase
      */
     public function show($id)
     {
-        //
+
+        $car = Car::with('ciudad','ciudad.provinces','ciudad.provinces.region','images','ad')->where('id',$id)->get();
+
+        if($car->isEmpty()){
+           return $this->sendError("Car not found",null,404);
+        }
+        return $this->sendResponse($car, 'OK');
     }
 
     /**

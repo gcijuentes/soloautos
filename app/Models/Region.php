@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Region extends Model
 {
-    protected $table = 'region';
+    protected $table = 'regiones';
     protected $primaryKey = 'id';
     use HasFactory;
 
@@ -19,6 +19,5 @@ class Region extends Model
     public function provinces(){
         return $this->hasMany('App\Models\province');
     }
-
 
 }

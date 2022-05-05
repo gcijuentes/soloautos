@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    protected $table = 'comuna';
+    protected $table = 'ciudad';
     protected $primaryKey = 'id';
     use HasFactory;
 
@@ -22,8 +22,8 @@ class City extends Model
     }
 
     //relacion many to one
-    public function province(){
-        return $this->belongsTo('App\Models\Province','id_provincia','id');
+    public function provinces(){
+        return $this->belongsTo('App\Models\Province','id_provincias','id');
     }
 
 }

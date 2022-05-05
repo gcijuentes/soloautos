@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Province extends Model
 {
-    protected $table = 'provincia';
+    protected $table = 'provincias';
     protected $primaryKey = 'id';
     use HasFactory;
 
@@ -23,7 +23,8 @@ class Province extends Model
 
     //relacion many to one
     public function region(){
-        return $this->belongsTo('App\Models\Region','id_region','id');
+        return $this->belongsTo('App\Models\Region','id_regiones','id');
     }
+
 
 }

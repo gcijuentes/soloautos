@@ -9,6 +9,7 @@ class image extends Model
 {
     protected $table = 'imagen';
     protected $primaryKey = 'id';
+    public $timestamps = false;
     use HasFactory;
 
     protected $fillable = [
